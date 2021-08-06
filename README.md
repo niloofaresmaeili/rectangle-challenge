@@ -1,4 +1,4 @@
-# challenge-rectangle
+# Rectangle Challenge
 
 ## Installation
 
