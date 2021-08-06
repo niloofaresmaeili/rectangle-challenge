@@ -1,0 +1,100 @@
+{
+  "swagger": "3.0.0",
+  "openapi": "3.0.0",
+  "title" : "Music API Documentation",
+  "description" : "MUSIC API course for egghead",
+  "license": {
+    "name": "MIT",
+    "url": "https://opensource.org/licenses/MIT"
+  },
+  "version": "1.0.0",
+  "host": "polar-plateau-87434.herokuapp.com",
+  "tags": [
+    {
+      "name": "Rectangle",
+      "description": "API for Rectangles Endpoints"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths" :{
+    "/":{
+      "post":{
+        "tags": ["Rectangle"],
+        "summary": "API Endpoint for save Rectangle",
+        "description" : "Save new Rectangles in database",
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "description": "main requestBody to register",
+                "type": "object",
+                "properties":{
+                  "main": {
+                    "type": "object"
+                  },
+                  "input":{
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "example":{
+                  "main":{"x": 3,"y": 4,"width": 5,"height": 10},
+                  "input" : [
+                    {"x": 3,"y": 4,"width": 5,"height": 10},
+                    {"x": 2,"y": 7,"width": 3,"height": 5},
+                    {"x": 1,"y": 1,"width": 5,"height": 10}
+                  ]
+                }  
+              }
+            }
+          }
+        },
+        "produces" : ["application/json"],
+        "responses":{
+          "200":{
+            "description": "درخواست با موفقیت انجام شد"
+          },
+          "404": {
+            "description": "سرویس مورد نظر یافت نشد"
+          } ,
+          "406": {
+            "description": "اطلاعات ارسال شده به سامانه دارای فرمت ناصحیح یا ناقص میباشند"
+          }
+        }
+      },
+      "get":{
+        "tags": ["Rectangle"],
+        "summary": "API Endpoint to get list of rectangles",
+        "description" : "List of rectangles",
+        "parameters":[
+          {
+            "name": "offset",
+            "description": "get number of offset.",
+            "in": "path"
+          },
+          {
+            "name": "limit",
+            "description": "get number of limit records.",
+            "in": "path"
+          }
+        ],
+        "produces" : ["application/json"],
+        "responses":{
+          "200":{
+            "description": "درخواست با موفقیت انجام شد"
+          },
+          "404": {
+            "description": "سرویس مورد نظر یافت نشد"
+          } ,
+          "406": {
+            "description": "اطلاعات ارسال شده به سامانه دارای فرمت ناصحیح یا ناقص میباشند"
+          }
+        }
+      }
+    }
+  }
+}
